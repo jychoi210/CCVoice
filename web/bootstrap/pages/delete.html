@@ -1,0 +1,20 @@
+<?php
+
+  function runMyFunction($name,$id,$pw,$filename) {
+    echo '<script>alert("파일이 삭제되었습니다.")</script>';
+    unlink($name);
+  ?>
+
+  <form id="transForm" action ="memberpage.html" method="POST">
+    <input type="hidden" name="ID" value="<?php echo ($id);?>" />
+    <input type="hidden" name="PW" value="<?php echo ($pw);?>" />
+    <a href="#" onclick="document.getElementById('transForm').submit();"><h1>이전 페이지로 돌아가기</h1></a>
+  </form>
+
+  <?php
+  }
+
+  if (isset($_GET['hello'])) {
+    runMyFunction($_GET['hello'],$_GET['id'],$_GET['pw'],$_GET['filename']);
+  }
+?>

@@ -1,0 +1,152 @@
+<html>
+
+<head>
+
+  <title>정윤 혜영이의 졸업작품</title>
+  <!-- Bootstrap Core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- MetisMenu CSS -->
+  <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+
+
+
+  <style>
+    body {
+        background: #f8f8f8;
+        padding: 60px 0;
+    }
+
+    #login-form > div {
+        margin: 15px 0;
+    }
+
+  </style>
+  <div class="container">
+  <h2 style="text-align:center"><b>Welcome To CCVoice Web Page</b></h2>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title" sytle="text-align:center;">Please Sign In</div>
+            </div>
+            <div class="panel-body">
+                <form id ="login-form" method="POST" name="loginForm" >
+                    <div>
+                        <input type="text" id ="ID" class="form-control" name="ID" placeholder="Username" autofocus>
+                    </div>
+                    <div>
+                        <input type="password" id ="PW" class="form-control" name="PW" placeholder="Password">
+                    </div>
+                    <div>
+                      <input type="submit" class="form-control btn btn-primary" value="log in">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script language=javascript>
+        function getval(_resultvalue){
+          var resultvalue = _resultvalue;
+          var formid = document.testForm;
+          if(resultvalue=='true'){
+            formid.action="mainpage.html";
+            formid.submit();
+          }else{
+            alert("아이디나 비밀번호를 잘못 입력하셨습니다. 다시 입력해주세요.");
+            return;
+          }
+        }
+        </script>
+        <?php
+            $hostname_localhost ="127.0.0.1";
+            $database_localhost ="CUSTOMER";
+            $username_localhost ="root";
+            $password_localhost ="gill";
+
+            $link = mysqli_connect("127.0.0.1","root","gill", "CUSTOMER")
+            or
+            trigger_error(mysqli_error(),E_USER_ERROR);
+
+            if(mysqli_connect_error()){
+              echo mysqli_connect_error();
+            }
+
+          mysqli_set_charset($link,"utf8");
+
+          //POST 방식으로 데이터를 받아온다.
+          $ID=isset($_POST['ID']) ? $_POST['ID'] : '';
+          $PW=isset($_POST['PW']) ? $_POST['PW'] : '';
+
+          if ($ID !="" and $PW !=""){
+            $sql="select * from LIST where ID = '".$ID."' AND PW = '".$PW. "'";
+            $result=mysqli_query($link,$sql);
+            $row=mysqli_num_rows($result);
+            if($row==1){
+              ?>
+              <form name="testForm" method="POST">
+                <input type="hidden" name="IDval" value="<?php echo $ID; ?>">
+                <input type="hidden" name="PWval" value="<?php echo $PW; ?>">
+              </form>
+              <script>
+              alert(document.testForm.IDval.value+"님 환영합니다.");
+              </script>
+              <?php
+              echo ("<script language=javascript> getval('true');</script>");
+              ?>
+              <?php
+            }else{
+              echo ("<script language=javascript> getval('false');</script>");
+              ?>
+              <?php
+            }
+          }
+          ?>
+
+  <script src="../vendor/jquery/jquery.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="../dist/js/sb-admin-2.js"></script>
+
+  <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
+  <script>
+  // tooltip demo
+  $('.tooltip-demo').tooltip({
+      selector: "[data-toggle=tooltip]",
+      container: "body"
+  })
+  // popover demo
+  $("[data-toggle=popover]")
+      .popover()
+  </script>
+</body>
+</html>
+<?php
+mysqli_close($link);
+?>
+<?php
+$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+if (!$android){
+?>
+<?php
+}
+?>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>정윤 혜영이의 졸업작품</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+
+      var TRange=null;
+
+      function findString (str) {
+       if (parseInt(navigator.appVersion)<4) return;
+       var strFound;
+       if (window.find) {
+
+        // CODE FOR BROWSERS THAT SUPPORT window.find
+
+        strFound=self.find(str);
+        if (!strFound) {
+         strFound=self.find(str,0,1);
+         while (self.find(str,0,1)) continue;
+        }
+       }
+       else if (navigator.appName.indexOf("Microsoft")!=-1) {
+
+        // EXPLORER-SPECIFIC CODE
+
+        if (TRange!=null) {
+         TRange.collapse(false);
+         strFound=TRange.findText(str);
+         if (strFound) TRange.select();
+        }
+        if (TRange==null || strFound==0) {
+         TRange=self.document.body.createTextRange();
+         strFound=TRange.findText(str);
+         if (strFound) TRange.select();
+        }
+       }
+       else if (navigator.appName=="Opera") {
+        alert ("Opera browsers not supported, sorry...")
+        return;
+       }
+       if (!strFound) alert ("String '"+str+"' not found!")
+       return;
+      }
+      if (!location.hash) {
+
+        location.hash = '#reload';
+
+        location.href = location.href;
+
+      }
+    </script>
+
+    <script language=javascript>
+    function getval(){
+      var formid = document.mainForm;
+      formid.action="mainpage.html";
+      formid.submit();
+    }
+    </script>
+
+    <script language=javascript>
+    function getval(){
+      var formid=document.heyForm;
+      formid.action="mainpage.html";
+      formid.submit();
+      alert("hi");
+    }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <form id="heyForm"  action="mainpage.html" method="post">
+                  <input type="hidden" name="IDval" value=<?php echo $_POST[ID];?> />
+                  <input type="hidden" name="PWval" value=<?php echo $_POST[PW];?> />
+                  <a href="#" onclick="document.getElementById('heyForm').submit();"><h3>CCVoice Web Page</h3></a>
+                  <div class="clearfix"></div>
+                </form>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                        <li><a href="logintest.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                          <div class="input-group custom-search-form">
+                            <form name="f1" action="" onSubmit="if(this.t1.value!=null && this.t1.value!='') findString(this.t1.value);return false">
+                              <span class="input-group-btn">
+                                <input type="text" name=t1 size='10' class="form-control" placeholder="Search...">
+                                <button name=b1 class="btn btn-default" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                              </span>
+                            </form>
+                          </div>
+                            <!-- /input-group -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">회원 정보 확인
+                      <button class="btn btn-outline btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                          Check your profile
+                      </button>
+                    </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+
+                        <!-- /.panel-heading -->
+
+                            <!-- Button trigger modal -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Profile</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            ID :
+                                            <?php
+                                            echo($_POST['ID']);
+                                            ?>
+                                            <br> PW :
+                                            <?php
+                                            echo($_POST['PW']);
+                                            ?>
+                                            <br> TEXT File num :
+                                            <?php
+
+                                            $dir = "/home/gill/customer_list";
+                                            $dir = $dir . "/" . $_POST[ID];
+                                            $handle  = opendir($dir);
+                                            $files = array();
+                                            $txt = "txt";
+
+                                            while (false !== ($filename = readdir($handle))) {
+                                                if($filename == "." || $filename == ".."){
+                                                    continue;
+                                                }
+
+                                                // 파일인 경우만 목록에 추가한다.
+                                                if(is_file($dir . "/" . $filename)){
+                                                  if(strpos($filename,$txt)!==false){
+                                                    $files[] = $filename;
+                                                  }
+                                                }
+                                            }
+
+                                            closedir($handle);
+                                            sort($files);
+                                            $num = count($files);
+                                            echo $num;
+                                            ?>
+
+                                            <br> WAV File num :
+                                            <?php
+                                            $dir = "/home/gill/customer_list";
+                                            $dir = $dir . "/" . $_POST[ID];
+                                            $handle  = opendir($dir);
+                                            $files = array();
+                                            $wav = "wav";
+
+                                            while (false !== ($filename = readdir($handle))) {
+                                                if($filename == "." || $filename == ".."){
+                                                    continue;
+                                                }
+
+                                                // 파일인 경우만 목록에 추가한다.
+                                                if(is_file($dir . "/" . $filename)){
+                                                  if(strpos($filename,$wav)!==false){
+                                                    $files[] = $filename;
+                                                  }
+                                                }
+                                            }
+
+                                            closedir($handle);
+                                            sort($files);
+                                            $num = count($files);
+                                            echo $num;
+                                            ?>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                        <!-- .panel-body -->
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+
+            </div>
+            <!-- /.row -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            WAV File List
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+
+                          <?php
+                          $dir = "/home/gill/customer_list";
+                          $dir = $dir . "/" . $_POST[ID];
+                          $handle  = opendir($dir);
+                          $files = array();
+                          $wav = "wav";
+
+                          while (false !== ($filename = readdir($handle))) {
+                              if($filename == "." || $filename == ".."){
+                                  continue;
+                              }
+
+                              // 파일인 경우만 목록에 추가한다.
+                              if(is_file($dir . "/" . $filename)){
+                                if(strpos($filename,$wav)!==false){
+                                  $files[] = $filename;
+                                }
+                              }
+                          }
+
+                          closedir($handle);
+                          sort($files);
+                          foreach ($files as $f) {
+                            ?>
+                            <div class="alert alert-info">
+                              <?php
+                                    echo $f;
+                                    echo "<br />";
+                                    $wavdir = "../../..";
+                                    $wavdir = $wavdir."/".$_POST[ID]."/".$f;
+                                  ?>
+                            <audio controls>
+                              <source src="<?php echo $wavdir?>" type="audio/wav">
+                                no wav
+                            </audio>
+                            <a href='delete.php?hello=<?php echo ($dir."/".$f) ?>'><div style="text-align:right">delete file here</div></a>
+                            <form id="finalForm"  action="delete.html" method="post">
+                              <input type="hidden" name="IDval" value=<?php echo $_POST[ID];?> />
+                              <input type="hidden" name="PWval" value=<?php echo $_POST[PW];?> />
+                              <input type="hidden" name="filename" value=<?php echo $wavdir ?> />
+                              <a href="#" onclick="document.getElementById('finalForm').submit();"><h3>delete!</h3></a>
+                            </form>
+
+                          </div>
+
+                        <?php
+                          }
+                          ?>
+
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            TEXT File List
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+
+                          <?php
+                          $dir = "/home/gill/customer_list";
+                          $dir = $dir . "/" . $_POST[ID];
+                          $handle  = opendir($dir);
+                          $files = array();
+                          $txt = "txt";
+
+                          while (false !== ($filename = readdir($handle))) {
+                              if($filename == "." || $filename == ".."){
+                                  continue;
+                              }
+
+                              // 파일인 경우만 목록에 추가한다.
+                              if(is_file($dir . "/" . $filename)){
+                                if(strpos($filename,$txt)!==false){
+                                  $files[] = $filename;
+                                }
+                              }
+                          }
+
+                          closedir($handle);
+                          sort($files);
+                          foreach ($files as $f) {
+                            ?>
+                            <div class="alert alert-info">
+                              <?php
+                                echo $f;
+                              ?>
+                              <a href='delete.html?hello=<?php echo ($dir."/".$f) ?>&id=<?php echo $_POST[ID]?>&pw=<?php echo $_POST[PW]?>&filename=<?php echo $f; ?>'><div style="text-align:right">delete file here</div></a>
+                          </div>
+
+                        <?php
+                          }
+                          ?>
+
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
+    <script>
+    // tooltip demo
+    $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    // popover demo
+    $("[data-toggle=popover]")
+        .popover()
+    </script>
+
+</body>
+
+</html>
