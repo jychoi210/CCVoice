@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:text="아이디 :"
+        android:layout_alignBaseline="@+id/editText01"
+        android:id="@+id/et_Id"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:width="300px"
+        android:hint="Enter ID"
+        android:ems="20"
+        android:id="@+id/editText01"
+        android:layout_toRightOf="@+id/et_Id" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="중복확인"
+        android:textSize="7pt"
+        android:typeface="normal"
+        android:id="@+id/button01"
+        android:clickable="true"
+        android:layout_toRightOf="@+id/editText01" />
+
+
+    <TextView
+        android:id="@+id/et_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText02"
+        android:paddingBottom="20dp"
+        android:text="비밀번호 :" />
+
+    <EditText
+        android:id="@+id/editText02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_Id"
+        android:layout_toRightOf="@+id/et_Password"
+        android:width="300px"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        android:text="비밀번호 확인 :"
+        android:id="@+id/et_Password_chk"/>
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:width="300px"
+        android:hint="Password"
+        android:id="@+id/editText05"
+        android:layout_toRightOf="@+id/et_Password_chk"
+        android:layout_alignBaseline="@+id/editText05"
+        android:layout_below="@+id/et_Password"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        android:text="이름 :"
+        android:id="@+id/textView03"
+        android:layout_alignBaseline="@+id/editText03" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:width="300px"
+        android:hint="Enter your name"
+        android:id="@+id/editText03"
+        android:layout_toRightOf="@+id/textView03"
+        android:layout_below="@+id/editText05" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/scrollView01">
+
+
+    </ScrollView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="동의합니다."
+        android:id="@+id/checkBox1"
+        android:layout_below="@+id/scrollView01" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:id="@+id/textView07"
+        android:layout_below="@+id/scrollView01" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원등록"
+        android:textSize="7pt"
+        android:typeface="normal"
+        android:id="@+id/button02"
+        android:onClick="bt_Join"
+        android:clickable="true"
+        android:layout_below="@+id/textView07" />
+
+</LinearLayout>
